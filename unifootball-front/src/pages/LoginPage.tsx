@@ -17,7 +17,7 @@ export default function LoginPage() {
     setLoading(true)
     try {
       const res = await client.post('/auth/login', { email, password })
-      login(res.data.access_token)
+      login(res.data.accessToken)
       navigate('/dashboard')
     } catch {
       setError('Credenciales inválidas')
