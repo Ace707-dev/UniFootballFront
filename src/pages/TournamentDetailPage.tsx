@@ -39,7 +39,7 @@ export default function TournamentDetailPage() {
 
   useEffect(() => {
     Promise.all([
-      client.get(`/standings?tournament_id=${id}`),
+      client.get(`/stats/standings/${id}`),
       client.get(`/matches?tournament_id=${id}`),
     ])
       .then(([sRes, mRes]) => { setStandings(sRes.data); setMatches(mRes.data) })

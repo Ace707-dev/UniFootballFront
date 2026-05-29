@@ -9,6 +9,7 @@ interface MatchEvent {
   minute: number
   playerName: string
   teamName: string
+  description?: string | null
 }
 
 interface MatchResult {
@@ -41,7 +42,7 @@ export default function MatchLivePage() {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   const fetchData = () => {
-    client.get(`/matches/live/${matchId}`)
+    client.get(`/matches/${matchId}/live`)
       .then(res => setData({
         homeTeamName: res.data.homeTeamName,
         awayTeamName: res.data.awayTeamName,

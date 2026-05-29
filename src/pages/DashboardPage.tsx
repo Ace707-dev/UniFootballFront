@@ -5,17 +5,12 @@ export default function DashboardPage() {
   const { logout } = useAuth()
   const navigate = useNavigate()
 
-  const handleLogout = () => {
-    logout()
-    navigate('/login')
-  }
-
   return (
     <>
       <nav className="navbar">
         <span className="navbar-brand">UNI<span>FOOTBALL</span></span>
         <div className="navbar-actions">
-          <button className="btn btn-danger" onClick={handleLogout}>Salir</button>
+          <button className="btn btn-danger" onClick={() => { logout(); navigate('/login') }}>Salir</button>
         </div>
       </nav>
       <div className="page">
@@ -29,17 +24,17 @@ export default function DashboardPage() {
             <div className="action-title">Torneos</div>
             <div className="action-desc">Ver todos los torneos activos</div>
           </div>
-          <div className="dashboard-action">
+          <div className="dashboard-action" onClick={() => navigate('/matches')}>
             <span className="action-icon">⚽</span>
             <div className="action-title">Partidos</div>
             <div className="action-desc">Resultados y fixtures</div>
           </div>
-          <div className="dashboard-action">
+          <div className="dashboard-action" onClick={() => navigate('/stats')}>
             <span className="action-icon">📊</span>
             <div className="action-title">Estadísticas</div>
             <div className="action-desc">Goles, asistencias y tarjetas</div>
           </div>
-          <div className="dashboard-action">
+          <div className="dashboard-action" onClick={() => navigate('/live')}>
             <span className="action-icon">🔴</span>
             <div className="action-title">En vivo</div>
             <div className="action-desc">Seguimiento en tiempo real</div>
