@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
-export default function DashboardPage() {
-  const { logout } = useAuth()
-  const navigate = useNavigate()
 
+export default function DashboardPage() {
+  const navigate = useNavigate()
+  const { logout, user } = useAuth()
   return (
     <>
       <nav className="navbar">
@@ -19,6 +19,13 @@ export default function DashboardPage() {
           <p>Bienvenido al sistema de torneos universitarios</p>
         </div>
         <div className="dashboard-grid">
+          {user?.role === 'admin' && (
+  <div className="dashboard-action" onClick={() => navigate('/admin')}>
+    <span className="action-icon">⚙️</span>
+    <div className="action-title">Admin</div>
+    <div className="action-desc">Panel de administración</div>
+  </div>
+)}
           <div className="dashboard-action" onClick={() => navigate('/tournaments')}>
             <span className="action-icon">🏆</span>
             <div className="action-title">Torneos</div>
